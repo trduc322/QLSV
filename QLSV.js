@@ -7,11 +7,12 @@ class SV{
 }
 
 var list = [];
+var checkList = [];
 var delList = [];
 
 function show(){
-    for(i = 0; i< list.length; i++){
-        document.getElementById("show").innerHTML += "<input type='checkbox' name = 'delete' >"+ list[i].mssv + " " +list[i].name + " " + list[i].mail + "<button id = 'btnEdit" + i + "'>Sua</button>" +"<br/>";
+    for(var i = 0; i< list.length; i++){
+        document.getElementById("show").innerHTML += "<input type='checkbox' name = 'delete' >"+ list[i].mssv + " " +list[i].name + " " + list[i].mail + "</br>";
     }
 }
 
@@ -30,15 +31,21 @@ window.onload = function(){
         s = new SV(mssv, name, mail)
         list.push(s);
         document.getElementById("sinh-vien-form").reset();
-        document.getElementById("show").innerHTML += "<input type='checkbox' name = 'delete' >"+ s.mssv + " " +s.name + " " + s.mail + "<button id = 'btnEdit" + (list.length - 1) + "'>Sua</button>" + "<br/>";
+        document.getElementById("show").innerHTML += "<input type='checkbox' name = 'delete' >"+ s.mssv + " " +s.name + " " + s.mail +  "</br>" ;
         var delbtn = document.getElementById("delete-btn");
-    
+
         delbtn.onclick = function(){
-            delList = document.getElementsByName("delete");
-            for(i = 0; i < delList.length; i++){
-                if(delList[i].checked == true){
-                    list.splice(i,1);
+            var j = 0;
+            checkList = document.getElementsByName("delete");
+            for(var i = 0; i < checkList.length; i++){
+                if(checkList[i].checked == true){
+                    delList[j] = i - j;
+                    j++;
                 }
+                
+            }
+            for(var i = 0; i<delList.length; i++){
+                list.splice(delList[i],1);
             }
             capnhat();
         }
