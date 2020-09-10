@@ -21,10 +21,6 @@ function capnhat(){
 }
 
 window.onload = function(){
-    //s1 = new SV(1, "rtz", "hohohaha");
-    //list.push(s1);
-    //s2 = new SV(2, "rts", "hahahoho");
-    //list.push(s2);
     var save = document.getElementById("save-btn");
     
     save.onclick = function(e){
