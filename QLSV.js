@@ -1,4 +1,4 @@
-class SV{
+"class SV{
     constructor(mssv, name, mail){
         this.mssv = mssv;
         this.name = name;
